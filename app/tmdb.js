@@ -14,7 +14,7 @@ exports.search = (keyword, page) => {
         .then(res => res.json())
         .then(json => {
             return {
-                total_pages: 500,
+                total_pages: json.total_pages,
                 movies : json.results.map(movie => {
                     return {
                         tmdb_id: movie.id, 

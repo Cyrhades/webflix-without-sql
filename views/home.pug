@@ -28,14 +28,16 @@ html(lang="fr")
 
                             ul#resultMovies.grid.grid-cols-4.gap-4
                                 each movie in movies
-                                    if movie.poster_path
-                                        li(class="relative flex flex-col items-center border rounded-lg overflow-hidden shadow-md hover:shadow-lg")                                           
-                                            .content_tmdb.py-4.text-center
-                                                h3.title.text-lg.font-semibold.mt-2.mb-1.truncate.w-full.text-center.text-gray-900 #{movie.title}
-                                            a.block.text-center(href="/movie/"+movie.tmdb_id)
+                                    li(class="relative flex flex-col items-center border rounded-lg overflow-hidden shadow-md hover:shadow-lg")                                           
+                                        .content_tmdb.py-4.text-center
+                                            h3.title.text-lg.font-semibold.mt-2.mb-1.truncate.w-full.text-center.text-gray-900 #{movie.title}
+                                        a.block.text-center(href="/movie/"+movie.tmdb_id)
+                                            if movie.poster_path
                                                 img.mb-2(src="https://image.tmdb.org/t/p/w500/"+movie.poster_path, alt=movie.title, width="120")
-                                                span.release.text-center.text-sm.text-gray-600 #{movie.release_date}
-                                                span.notation.mb-4.text-center.text-gray-700.font-bold.block.mt-2 #{movie.vote_average}
+                                            else 
+                                                img.mb-2(src="/images/no_picture.jpg", alt=movie.title, width="120")
+                                            span.release.text-center.text-sm.text-gray-600 #{movie.release_date}
+                                            span.notation.mb-4.text-center.text-gray-700.font-bold.block.mt-2 #{movie.vote_average}
                             include ./paginate.pug
                         else 
                             .bg-blue-200.px-4.py-2.rounded-md.border.border-blue-400 Votre recherche "<strong>#{keyword}</strong>" n'a donnée aucun résultat

@@ -12,10 +12,20 @@ exports.search = (keyword, page) => {
 
     return fetch(url, options)
         .then(res => res.json())
-        .then(json => json.results.map(
-            movie => {
-                return {tmdb_id: movie.id, vote_average: movie.vote_average, release_date: movie.release_date, title: movie.title, poster_path: movie.poster_path } 
-            })
-        )
+        .then(json => {
+            return {
+                total_pages: 500,
+                movies : json.results.map(movie => {
+                    return {
+                        tmdb_id: movie.id, 
+                        vote_average: movie.vote_average, 
+                        release_date: movie.release_date, 
+                        title: movie.title, 
+                        poster_path: movie.poster_path 
+                    } 
+                }),
+
+            }
+        })
         .catch(err => console.error('error:' + err));
 };

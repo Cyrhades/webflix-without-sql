@@ -13,7 +13,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 router(app);
 
+
 // Mise en écoute du serveur
-app.listen(3000, () => {
-    console.log(`Server HTTP en écoute : http://localhost:3000`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server HTTP en écoute : http://localhost:${process.env.PORT}`);
 })

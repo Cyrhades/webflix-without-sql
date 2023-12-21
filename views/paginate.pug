@@ -1,0 +1,67 @@
+//- on affiche la pagination uniquement si il y a plus d'une page
+if last > 1
+    nav.d-flex.justify-content-end
+        ul.pagination.flex.justify-center.my-4
+            if page == 1
+                li.px-3.m-1.py-1.bg-gray-200.text-white.rounded-l-md
+                    a.page-link(href="javascript:;") Précédent
+            else 
+                li.px-3.m-1.py-1.bg-red-200.text-gray-700.rounded-l-md
+                    a.page-link(href=route+"page="+(page-1)) Précédent
+            
+            //- si il y a 10 pages Max on affiche tout    
+            if last <= 10
+                - var i = 1;
+                while i < last+1    
+                    if i==page   
+                        li.px-3.m-1.py-1.bg-red-600.text-white.rounded-md
+                            a.page-link(href="javascript:;")= i++ 
+                    else                     
+                        li.px-3.m-1.py-1.bg-red-200.text-gray-700.rounded-md
+                            a.page-link(href=route+'page='+i)= i++ 
+            //- Si il y a plus de 10 pages on va devoir splitter
+            else 
+                - var i = 1;
+                while i <= 5   
+                    if i==page   
+                        li.px-3.m-1.py-1.bg-red-600.text-white.rounded-md
+                            a.page-link(href="javascript:;")= i++ 
+                    else                     
+                        li.px-3.m-1.py-1.bg-red-200.text-gray-700.rounded-md
+                            a.page-link(href=route+'page='+i)= i++ 
+
+                
+                if page>4       
+                    if page>8 
+                        | ...
+                    - var i = (parseInt(page)-2);  
+                    while i < (parseInt(page)+3)
+                        if i>5
+                            if i==page   
+                                li.px-3.m-1.py-1.bg-red-600.text-white.rounded-md
+                                    a.page-link(href="javascript:;")= i++ 
+                            else                     
+                                li.px-3.m-1.py-1.bg-red-200.text-gray-700.rounded-md
+                                    a.page-link(href=route+'page='+i)= i++  
+                        else 
+                            -i++ 
+                if page<last-6                   
+                    | ...
+
+
+                - var i = last-3;
+                while i <= last   
+                    if i==page   
+                        li.px-3.m-1.py-1.bg-red-600.text-white.rounded-md
+                            a.page-link(href="javascript:;")= i++
+                    else                     
+                        li.px-3.m-1.py-1.bg-red-200.text-gray-700.rounded-md
+                            a.page-link(href=route+'page='+i)= i++
+
+
+            if page >= last
+                li.px-3.m-1.py-1.bg-gray-200.text-white.rounded-r-md
+                    a.page-link(href="javascript:;") Suivant
+            else 
+                li.px-3.m-1.py-1.bg-red-200.text-gray-700.rounded-r-md
+                    a.page-link(href=route+"page="+(parseInt(page)+1)) Suivant

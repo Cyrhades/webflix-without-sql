@@ -7,7 +7,7 @@ html(lang="fr")
         link(href="/styles/style.css", rel="stylesheet")
         link(href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css", rel="stylesheet")
     body(class="bg-gray-100")
-        header(class="bg-red-600 text-white py-4")
+        header(class="fixed z-10 top-0 left-0 w-full bg-red-600 text-white py-4")
             h1(class="text-4xl text-center") Bienvenue sur WebFlix!
 
         main(class="container mx-auto mt-8")            
@@ -36,6 +36,7 @@ html(lang="fr")
                                                 img.mb-2(src="https://image.tmdb.org/t/p/w500/"+movie.poster_path, alt=movie.title, width="120")
                                                 span.release.text-center.text-sm.text-gray-600 #{movie.release_date}
                                                 span.notation.mb-4.text-center.text-gray-700.font-bold.block.mt-2 #{movie.vote_average}
+                            include ./paginate.pug
                         else 
                             .bg-blue-200.px-4.py-2.rounded-md.border.border-blue-400 Votre recherche "<strong>#{keyword}</strong>" n'a donnée aucun résultat
 

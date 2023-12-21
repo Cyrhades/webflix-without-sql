@@ -7,8 +7,14 @@ module.exports = (app) => {
     })
 
     app.get('/search', (request, response) => {
-        tmdb.search(request.query.q, 1).then(movies => {
-            response.render('home', {keyword: request.query.q, movies })
+        tmdb.search(request.query.q, request.query.page).then(results => {
+            response.render('home', {
+                last: results.total_pages,
+                page: request.query.page||1,
+                movies: results.movies,
+                keyword: request.query.q,
+                route : `/search?q=${request.query.q}&`
+            })
         })
     })
 };

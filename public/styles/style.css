@@ -1,0 +1,12 @@
+.star-on {
+  font-size: 12px;
+  line-height: 20px;
+  vertical-align:middle;
+}
+.star-off {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000000;
+  line-height: 20px;
+  vertical-align:middle;
+}

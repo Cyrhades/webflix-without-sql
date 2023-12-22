@@ -1,0 +1,27 @@
+doctype html
+html(lang="fr")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Webflix
+        link(href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css", rel="stylesheet")
+        link(href="/styles/style.css", rel="stylesheet")
+        block stylesheet
+
+
+    body(class="bg-gray-100")
+        header(class="fixed z-10 top-0 left-0 w-full bg-red-600 text-white py-4")
+            h1(class="text-4xl text-center") Bienvenue sur WebFlix!
+            a(href="/inscription") Inscription
+        block slider 
+
+        main(class="container mx-auto mt-8")
+            block content 
+
+        
+        footer(class="fixed mt-8 bottom-0 left-0 w-full bg-gray-500 text-white py-4 text-center")
+            p Copyright © 2023 - WebFlix
+
+        script(src="/js/movies.js")
+        script(src=process.env.BROWSER_REFRESH_URL)
+        block script

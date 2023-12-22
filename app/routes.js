@@ -6,6 +6,16 @@ module.exports = (app) => {
         response.render('home')
     })
 
+    app.get("/inscription", (request, response) => {
+        response.render('register')
+    })
+
+    app.post("/inscription", (request, response) => {
+        console.log(request.body)
+        
+        response.send("ok");
+    })
+
     app.get('/search', (request, response) => {
         tmdb.search(request.query.q, request.query.page).then(results => {
             response.render('home', {
@@ -15,6 +25,12 @@ module.exports = (app) => {
                 keyword: request.query.q,
                 route : `/search?q=${request.query.q}&`
             })
+        })
+    })
+
+    app.get('/movie/:id', (request, response) => {
+        tmdb.details(request.params.id).then(movie => {
+            response.render('movie', { movie })
         })
     })
 };

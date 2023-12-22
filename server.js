@@ -5,6 +5,8 @@ const router = require("./app/routes.js");
 const dotenv = require("dotenv")
 dotenv.config();
 
+app.use(express.urlencoded({extended:false}));
+
 // Définir dans notre application le moteur de template utilisé
 app.set('view engine', 'pug');
 

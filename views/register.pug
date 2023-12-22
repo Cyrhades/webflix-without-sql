@@ -1,0 +1,22 @@
+extends layout.pug 
+
+block content
+    section(class="m-20 grid grid-cols-1 md:grid-cols-1 gap-4")
+        div(class="p-4 bg-white shadow-md")
+            h2(class="text-2xl mb-4") Inscription   
+            form(method="post")
+                p
+                    label(for="username") Pseudo
+                    input(type="text" name="username" id="username" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-500")
+                p
+                    label(for="password") Mot de passe
+                    input(type="password" name="password" id="password" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-500")
+                p
+                    label(for="lastname") Nom
+                    input(type="text" name="lastname" id="lastname" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-500")
+                p
+                    label(for="firstname") Prénom
+                    input(type="text" name="firstname" id="firstname" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:border-blue-500")
+
+                p 
+                    button(type="submit") S'enregistrer

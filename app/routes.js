@@ -1,20 +1,25 @@
 const tmdb = require("./tmdb.js");
+const user = require("./user.js");
 module.exports = (app) => {
     // Déclarer notre première route
     app.get('/',(request, response) => {
         // affichage du rendu de notre fichier ./views/home.pug
         response.render('home')
     })
-
+    app.get('/a',(request, response) => {
+        request.flash("notify", "Vous êtes maintenant inscrit !")
+        response.redirect('/');
+    })
     app.get("/inscription", (request, response) => {
         response.render('register')
     })
 
     app.post("/inscription", (request, response) => {
-        console.log(request.body)
-        response.send("todo faire l'inscription");
+        user.create(request.body.username, request.body.password, request.body.firstname, request.body.lastname).then(() => {
+            request.flash("notify", "Vous êtes maintenant inscrit !")
+            response.redirect('/');
+        });
     })
-
 
     app.get("/connexion", (request, response) => {
         response.render('connection')

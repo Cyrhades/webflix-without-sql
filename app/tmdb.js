@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 
-exports.search = (keyword, page) => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${keyword}&include_adult=false&language=en-US&page=${page || 1}`;
+function getInfos(url) {
     const options = {
         method: 'GET',
         headers: {
@@ -20,7 +19,7 @@ exports.search = (keyword, page) => {
                         tmdb_id: movie.id, 
                         vote_average: movie.vote_average, 
                         release_date: movie.release_date, 
-                        title: movie.title, 
+                        title: movie.title || movie.name, 
                         poster_path: movie.poster_path 
                     } 
                 }),
@@ -28,8 +27,20 @@ exports.search = (keyword, page) => {
             }
         })
         .catch(err => console.error('error:' + err));
+}
+
+exports.search = (keyword, page) => {
+    const url = `https://api.themoviedb.org/3/search/movie?query=${keyword}&include_adult=false&language=fr-FR&page=${page || 1}`;
+    return getInfos(url);
 };
 
+exports.news = () => {
+    return getInfos(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`);
+};
+
+exports.series = () => {
+    return getInfos(`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc`);
+};
 
 exports.details = (id) => {
     const url = `https://api.themoviedb.org/3/movie/${id}?language=fr-FR`;

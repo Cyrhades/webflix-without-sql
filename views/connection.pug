@@ -3,7 +3,7 @@ extends layout.pug
 block content
     section.flex.flex-wrap.mx-3.mb-6.w-full
         div(class="p-4 bg-white shadow-md mx-auto")
-            h2(class="text-2xl mb-4") Inscription   
+            h2(class="text-2xl mb-4") Connexion   
             form(method="post" class="w-full max-w-sm mx-auto")
                 .flex.flex-wrap.mx-3.mb-6
                     .w-full.px-3
@@ -12,12 +12,5 @@ block content
                     .w-full.px-3
                         label(for="password" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2") Mot de passe
                         input(type="password" name="password" id="password" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500")
-                    .w-full.px-3
-                        label(for="lastname" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2") Nom
-                        input(type="text" name="lastname" id="lastname" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500")
-                    .w-full.px-3
-                        label(for="firstname" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2") Prénom
-                        input(type="text" name="firstname" id="firstname" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-500")
-
                 p.text-center
-                    button(type="submit" class="mt-2 px-4 py-2 bg-red-600 text-white rounded-md inline-block") S'inscrire
+                    button(type="submit" class="mt-2 px-4 py-2 bg-red-600 text-white rounded-md inline-block") Se connecter

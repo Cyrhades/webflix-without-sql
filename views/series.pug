@@ -1,0 +1,20 @@
+extends layout.pug 
+
+block content
+    if movies.length > 0
+        section(class="mt-10 grid grid-cols-1 md:grid-cols-1 gap-4")
+            div(class="p-4 bg-white shadow-md")    
+                h2(class="text-2xl mb-4") Les séries   
+                ul#resultMovies.grid.grid-cols-4.gap-4
+                    each movie in movies
+                        li(class="relative flex flex-col items-center border rounded-lg overflow-hidden shadow-md hover:shadow-lg")                                           
+                            .content_tmdb.py-4.text-center
+                                h3.title.text-lg.font-semibold.mt-2.mb-1.truncate.w-full.text-center.text-gray-900 #{movie.title}
+                           
+                            if movie.poster_path
+                                img.mb-2(src="https://image.tmdb.org/t/p/w500/"+movie.poster_path, alt=movie.title, width="120")
+                            else 
+                                img.mb-2(src="/images/no_picture.jpg", alt=movie.title, width="120")
+                            span.notation.mb-4.text-center.text-gray-700.font-bold.block.mt-2 #{movie.vote_average}           
+    else
+        .bg-yellow-200.px-4.py-2.rounded-md.border.border-yellow-400 Oops une erreur est survenue.

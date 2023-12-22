@@ -10,16 +10,31 @@ html(lang="fr")
 
 
     body(class="bg-gray-100")
-        header(class="fixed z-10 top-0 left-0 w-full bg-red-600 text-white py-4")
+        header(class="w-full bg-red-600 text-white py-4")
             h1(class="text-4xl text-center") Bienvenue sur WebFlix!
-            a(href="/inscription") Inscription
+        nav(class="bg-gray-800 text-white")
+            .container.mx-auto
+                ul.flex.justify-center
+                    li.px-4.py-2
+                        a(href="/", class="hover:underline") Accueil
+                    li.px-4.py-2
+                        a(href="/search", class="hover:underline") Chercher un film
+                    li.px-4.py-2
+                        a(href="#", class="hover:underline") Nouveautés
+                    li.px-4.py-2
+                        a(href="#", class="hover:underline") Séries TV
+                    li.px-4.py-2
+                        a(href="/inscription", class="hover:underline") Inscription
+                    li.px-4.py-2
+                        a(href="/connexion", class="hover:underline") Connexion
         block slider 
 
-        main(class="container mx-auto mt-8")
-            block content 
+        main(class="container mx-auto mt-10")
+            .m-20
+                block content 
 
         
-        footer(class="fixed mt-8 bottom-0 left-0 w-full bg-gray-500 text-white py-4 text-center")
+        footer(class="fixed mt-8 bottom-0 left-0 w-full bg-gray-800 text-white py-4 text-center")
             p Copyright © 2023 - WebFlix
 
         script(src="/js/movies.js")

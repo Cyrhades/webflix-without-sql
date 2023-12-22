@@ -18,7 +18,7 @@ module.exports = (app) => {
 
     app.get('/search', (request, response) => {
         tmdb.search(request.query.q, request.query.page).then(results => {
-            response.render('home', {
+            response.render('search', {
                 last: results.total_pages,
                 page: request.query.page||1,
                 movies: results.movies,

@@ -3,25 +3,25 @@ extends layout.pug
 block content
     #slideMovie
         div(style="background-image: url('https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces"+movie.backdrop_path+"');")
-            #prezMovie 
-                .container
-                    .row                    
-                        .col-3
-                            img(src="https://image.tmdb.org/t/p/w500/"+movie.poster_path)
-                        .col-9 
-                            h2 #{movie.title}
-                            span.release #{movie.release_date} 
-                            span.sep  • 
-                            span
-                                each genre, index in movie.genres.slice(0, -1)
-                                    | #{genre.name}, 
-                                if movie.genres.length
-                                    span #{movie.genres[movie.genres.length - 1].name}
-                            br
-                            span Note des utilisateurs : 
-                            span.notation #{movie.vote_average}
-                            br
-                            br
-                            span.tagline #{movie.tagline}
-                            h4.synopsis Synopsis
-                            p #{movie.overview}
+            // Utilisation des classes Tailwind CSS
+            .container.mx-auto.p-4
+                .flex.flex-wrap
+                    div(class="w-full md:w-1/4")
+                        img(src=`https://image.tmdb.org/t/p/w500/${movie.poster_path}`, class="w-full")
+                    div(class="w-full md:w-3/4 flex flex-col")                    
+                        h2.text-2xl.font-bold.mb-2 #{movie.title}
+                        span.text-gray-600.text-sm.mb-1.inline-block #{movie.release_date}
+                        span.text-gray-600.text-sm.mb-1.inline-block.mx-1 • 
+                        span.text-gray-600.text-sm.mb-1.inline-block
+                            each genre, index in movie.genres.slice(0, -1)
+                                | #{genre.name},
+                            if movie.genres.length
+                                span #{movie.genres[movie.genres.length - 1].name}
+                        br
+                        span.font-semibold.text-lg.mb-2 Note des utilisateurs : 
+                        span.text-xl.font-bold.text-yellow-500 #{movie.vote_average}
+                        br
+                        br
+                        span.text-gray-700.text-lg.block.mb-2 #{movie.tagline}
+                        h4.text-xl.font-semibold.mb-1.synopsis Synopsis
+                        p.text-gray-800 #{movie.overview}
